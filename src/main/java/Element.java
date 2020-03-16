@@ -57,6 +57,13 @@ public class Element {
                 '}';
     }
 
+
+    /**
+     * Returneaza o lista cu elementele care se afla inaintea
+     * elementului primit ca paramentru in lista de preferinte
+     * a obiectului curent.
+     */
+
     public List<Element> getPreferencesBefore(Element element) {
         List<Element> superior = new ArrayList<>();
         for (Element p : preferences) {
@@ -68,6 +75,11 @@ public class Element {
         return superior;
     }
 
+    /**
+     * Returneaza true daca elementul first se afla inaintea
+     * elementului second in lista de preferinte a obiectului curent.
+     */
+
     public boolean prefersFirstBetter(Element first, Element second) {
         int i1 = preferences.indexOf(first);
         int i2 = preferences.indexOf(second);
@@ -77,6 +89,10 @@ public class Element {
         System.out.println("eroare prefersFirstBetter");
         return false;
     }
+
+    /**
+     * Genereaza valori random pentru atributele obiectului curent
+     */
 
     public Element randomElement()
     {

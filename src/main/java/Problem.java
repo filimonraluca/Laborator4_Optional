@@ -9,6 +9,12 @@ public class Problem {
         this.partition2 = partition2;
     }
 
+    /**
+     * Metoda getSolution determina un maching
+     * intre cele 2 partitii folosindu-se de constructorul
+     * clasei Maching.
+     */
+
     public Matching getSolution()
     {
         Matching solution = new Matching(partition1,partition2);

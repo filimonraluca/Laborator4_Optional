@@ -7,6 +7,12 @@ public class Matching {
     Map<Element, List<Element>> lr = new HashMap<>();
     Map<Element, List<Element>> rl = new HashMap<>();
 
+
+    /**
+     * Metoda adauga cele doua elemente l, r
+     * la map-urile simetrice
+     */
+
     public void add(Element l, Element r) {
         if (!lr.containsKey(l)) {
             lr.put(l, new ArrayList<>());
@@ -18,20 +24,30 @@ public class Matching {
         rl.get(r).add(l);
     }
 
-    public Matching(Partition residents, Partition hospitals) {
-        for (Element resident : residents.getPartition()) {
-            for (Element hospital : resident.getPreferences()) {
-                if (hospital.getCapacity() > 0) {
-                    add(resident, hospital);
-                    hospital.minusCapacity();
-                    resident.minusCapacity();
-                    if (resident.getCapacity() <= 0) {
+    /**
+     * Constructorul realizeaza un maching intre cele doua partitii
+     * Elementelor din stanga li se asociaza un element din dreapta in
+     * ordinea preferintelor si tinand cont de capacitatea elementelor.
+     */
+
+    public Matching(Partition left, Partition right) {
+        for (Element leftElement : left.getPartition()) {
+            for (Element rightElement : leftElement.getPreferences()) {
+                if (rightElement.getCapacity() > 0) {
+                    add(leftElement, rightElement);
+                    rightElement.minusCapacity();
+                    leftElement.minusCapacity();
+                    if (leftElement.getCapacity() <= 0) {
                         break;
                     }
                 }
             }
         }
     }
+
+    /**
+     *  Metoda verifica daca cele 2 elemente left, right formeaza o pereche stabila
+     */
 
     boolean isStable(Element left, Element right) {
         for (Element preferredOverRight : left.getPreferencesBefore(right)) {
@@ -45,10 +61,15 @@ public class Matching {
         return true;
     }
 
+    /**
+     * Metoda trece prin toate elementele map-ului si se verifica
+     * daca perechea (l,r) este stabila.
+     */
+
     boolean isStable() {
-        for (Element h : lr.keySet()) {
-            for (Element r : lr.get(h))
-                if (!isStable(h, r)) {
+        for (Element l : lr.keySet()) {
+            for (Element r : lr.get(l))
+                if (!isStable(l, r)) {
                     return false;
                 }
         }

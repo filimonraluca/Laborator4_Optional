@@ -9,6 +9,11 @@ public class RandomInstances {
         right = new Partition();
     }
 
+    /**
+     * Metoda createInstances adauga elemente in partitiile
+     * left si right ale obiectului curent.
+     */
+
     public void createInstances()
     {
         Random rand = new Random();
@@ -26,6 +31,17 @@ public class RandomInstances {
                 }
 
             }
+            addPreferences();
+    }
+
+    /**
+     * Metoda addPreferances adauga elemente in listele de
+     * preferinte a elementelor din partitiile left si right.
+     */
+
+    private void addPreferences()
+    {
+        Random rand = new Random();
         for (Element leftElement:left.getPartition())
         {
             leftElement.preferences.add(right.getPartition().get(rand.nextInt(right.getPartition().size())));

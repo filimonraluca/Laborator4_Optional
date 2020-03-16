@@ -1,0 +1,40 @@
+-Am creat clasa Element cu atributele name, capacity si o lista
+de preferinte. Deoarece se propunea o generalizare a problemei 
+am presupus ca fiecare element va avea o capacitatea.
+-Am creat clasa Partition cu un singur atribut si anume o lista de
+elemente.
+-Am creat clasa Matching cu doua hashMapuri cu scopul de a retine 
+asocierile dintre elemente, de la stanga la dreapta si de la dreapta
+la stanga. Deoarece problema anterioara trebuie generalizata
+am presupus acum ca atat elementele din stanga cat si cele din dreapta
+pot fi asociate cu o lista de elemente nu cu un singur element.
+-Am creat clasa Problem care are ca atribute doua Partition. In interiorul 
+clasei exista metoda getSolution care va returna un Matching intre cele
+doua partitii.
+
+Algoritmul de matching se realizeaza in contructorul clasei Matching si
+functioneaza astfel:
+	- se parcurg elementele uneia dintre partitii
+	- pentru fiecare element (leftElement) ar partitiei se parcurg preferintele sale
+	- daca capacitatea elementului (rightElement) permite perechea (leftElement,rightElement)
+	este adaugata la cele doua hashMapuri.
+	- capacitatea elementelor leftElement, rightElement scade
+	- in cazul in care capacitatea elementului leftElement a ajuns la 0 se iese din bucla
+
+Pentru generarea random a elementelor am implementat metoda randomElement in
+clasa Element.
+Pentru generarea radom a instantei problemei am creat clasa RandomInstances ce are
+ca atribute doua partitii. Metoda createInstances adauga elemente generate random
+in cele 2 partitii astfel:
+	- se genereaza random numarul de elemente
+	- se genereaza random un numar. Daca aceste este par elementul creat se va
+adauga in partitia stanga, altfel in partitia dreapta.
+	- se genereaza preferintele intre elemente
+
+Pentru a verifica daca matching-ul generat de algoritmul meu este stabil 
+am implementat metoda isStable() in clasa Matching. Se procedeaza astfel:
+-se trece prin toate cheile hashMap-ului si prin elementele listei asociate
+-pentru fiecare pereche de elemente (l,r) se verifica daca este o pereche stabila isStable(left,right)
+- pentru elementul left se trece prin toate elementele aflate in lista sa de preferinte inaintea elementului right (preferredOverRight)
+- se determina cu cine este asociat elementul preferredOverRight (matchedWith)
+- se parcurg toate elementele listei matchedWith si se verifica daca elementul preferredOverRight ar prefera mai mult elementul left decat cel cu care este asociat 
