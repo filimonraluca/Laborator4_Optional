@@ -11,7 +11,7 @@ public class Problem {
 
     /**
      * Metoda getSolution determina un maching
-     * intre cele 2 partitii folosindu-se de constructorul
+     * intre cele 2 partitii folosind constructorul
      * clasei Maching.
      */
 

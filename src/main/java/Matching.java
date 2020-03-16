@@ -9,7 +9,7 @@ public class Matching {
 
 
     /**
-     * Metoda adauga cele doua elemente l, r
+     * Metoda adauga cele doua elemente (l, r)
      * la map-urile simetrice
      */
 

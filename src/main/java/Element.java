@@ -77,7 +77,8 @@ public class Element {
 
     /**
      * Returneaza true daca elementul first se afla inaintea
-     * elementului second in lista de preferinte a obiectului curent.
+     * elementului second in lista de preferinte a obiectului curent, altfel
+     * returneaza false.
      */
 
     public boolean prefersFirstBetter(Element first, Element second) {
@@ -91,7 +92,7 @@ public class Element {
     }
 
     /**
-     * Genereaza valori random pentru atributele obiectului curent
+     * Genereaza valori random pentru atributele obiectului curent.
      */
 
     public Element randomElement()
